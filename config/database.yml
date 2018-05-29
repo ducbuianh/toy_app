@@ -3,22 +3,30 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   encoding: utf8
-  username: deploy
-  password: 1
-  host: 18.179.23.185
-  port: 3306
 
 development:
   <<: *default
-  database: toy
+  username: <%= ENV["username"] %>
+  password: <%= ENV["pass"] %>
+  host: <%= ENV["dbhost"] %>
+  port: <%= ENV["port"] %>
+  database: <%= ENV["db"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: toy
+  username: <%= ENV["username"] %>
+  password: <%= ENV["pass"] %>
+  host: <%= ENV["dbhost"] %>
+  port: <%= ENV["port"] %>
+  database: <%= ENV["db"] %>
 
 production:
   <<: *default
-  database: toy
+  username: <%= ENV["username"] %>
+  password: <%= ENV["pass"] %>
+  host: <%= ENV["dbhost"] %>
+  port: <%= ENV["port"] %>
+  database: <%= ENV["db"] %>
